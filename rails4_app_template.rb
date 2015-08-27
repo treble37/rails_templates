@@ -101,29 +101,29 @@ run "touch spec/support/database_cleaner.rb"
 
 inside'spec/support' do
   insert_into_file 'database_cleaner.rb', %Q{
-    RSpec.configure do |config|
+  RSpec.configure do |config|
 
-      config.before(:suite) do
-        DatabaseCleaner.clean_with(:truncation)
-      end
-
-      config.before(:each) do
-        DatabaseCleaner.strategy = :transaction
-      end
-
-      config.before(:each, :js => true) do
-        DatabaseCleaner.strategy = :truncation
-      end
-
-      config.before(:each) do
-        DatabaseCleaner.start
-      end
-
-      config.after(:each) do
-        DatabaseCleaner.clean
-      end
-
+    config.before(:suite) do
+      DatabaseCleaner.clean_with(:truncation)
     end
+
+    config.before(:each) do
+      DatabaseCleaner.strategy = :transaction
+    end
+
+    config.before(:each, :js => true) do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
+
+  end
   }, after: ""
 end
 
