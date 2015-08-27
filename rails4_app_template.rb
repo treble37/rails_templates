@@ -96,6 +96,36 @@ generate('rspec:install')
 
 run "rm app/views/layouts/application.html.erb"
 run "rm -rf test"
+run "mkdir spec/support"
+run "touch spec/support/database_cleaner.rb"
+
+inside'spec/support' do
+  insert_into_file 'database_cleaner.rb', %Q{
+    RSpec.configure do |config|
+
+      config.before(:suite) do
+        DatabaseCleaner.clean_with(:truncation)
+      end
+
+      config.before(:each) do
+        DatabaseCleaner.strategy = :transaction
+      end
+
+      config.before(:each, :js => true) do
+        DatabaseCleaner.strategy = :truncation
+      end
+
+      config.before(:each) do
+        DatabaseCleaner.start
+      end
+
+      config.after(:each) do
+        DatabaseCleaner.clean
+      end
+
+    end
+  }, after: ""
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
