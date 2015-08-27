@@ -1,4 +1,5 @@
 gsub_file "Gemfile", /^gem\s+["']turbolinks["'].*$/,''
+gsub_file "app/javascripts/application.js", /^\/\/= require turbolinks$/,''
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 #gem 'rails', '~> 4.2.4'
