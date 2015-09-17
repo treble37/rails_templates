@@ -127,7 +127,7 @@ inside'spec/support' do
   }, after: ""
 end
 
-gsub_file "app/javascripts/application.js", /^\/\/= require turbolinks$/,''
+gsub_file "app/assets/javascripts/application.js", /^\/\/= require turbolinks$/,''
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
