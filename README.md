@@ -5,3 +5,8 @@ To run rails4_app_template.rb:
 
 rails new blog -m ~/template.rb
 rails new blog -m http://example.com/template.rb
+
+Todos:
+
+- Configure shoulda matchers install
+- Configure Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
