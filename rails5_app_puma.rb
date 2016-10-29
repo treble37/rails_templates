@@ -99,7 +99,7 @@ run "rm -rf test"
 run "mkdir spec/support"
 run "touch spec/support/database_cleaner.rb"
 
-inside'spec/support' do
+inside 'spec/support' do
   insert_into_file 'database_cleaner.rb', %Q{
   RSpec.configure do |config|
 
